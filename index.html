@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- step 2 - add ng-app derective to html -->
+<html ng-app="movieLabApp">
+  <head>
+    <meta charset="utf-8">
+<!-- step 1 - include angular CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <title>Movie Lab (Angular intro)</title>
+  </head>
+<!-- step 3 - add ng-controller to body -->
+  <body ng-controller="MovieLabController as movielab">
+<!-- MAKE SURE TO CALL THE SAME CONTROLLER ... movielab -->
+<h2>List of movies</h2>
+<div ng-repeat="movie in movielab.moviesToWatch | orderBy: 'id'">
+  <!-- to limit to specific number is limitTo: # -->
+  <p><img ng-Click="movielab.deleteMovie(movie)" src="images/delete_icon.png" alt="" width="15px" height="15px"/> {{movie.name}}</p>
+</div>
+
+<hr>
+<!-- form to add movies -->
+<form ng-submit="movielab.addMovie()">
+<label for="movie-title">Add movie</label>
+<input type="text" ng-model="movielab.movie.name">
+<input type="submit" value="add movie">
+<!-- <a href="#">view more</a> -->
+</form>
+  </body>
+</html>
